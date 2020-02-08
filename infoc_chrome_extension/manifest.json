@@ -1,0 +1,17 @@
+{
+  "name": "Infoc Cpp Code",
+  "description": "generator info report cpp code",
+  "version": "0.1",
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "cookies",
+    "http://base.cmcm.com:8080/"
+  ],
+  "background": {
+    "scripts": [
+      "app.js"
+    ]
+  },
+  "manifest_version": 2
+}

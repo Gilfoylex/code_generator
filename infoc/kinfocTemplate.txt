@@ -1,0 +1,25 @@
+struct {{ClassName}}
+{
+    {{ClassName}}()
+{{#kInfocTableData}}      {{kPreDot}} {{getDefName}}({{{getDefaultValue}}})
+{{/kInfocTableData}}
+      , {{kInfocIsReportCache}}(TRUE)
+    {
+        
+    }
+
+    void Report() {
+        KInfocNoKfmtFileWrap infocClient;
+        infocClient.SetKfmt(L"{{kInfocFmtStr}}");
+{{#kInfocTableData}}        infocClient.{{getAdd}}(L"{{kName}}", {{getDefName}});
+{{/kInfocTableData}}
+
+        if ({{kInfocIsReportCache}} || !infocClient.Report()) {
+            infocClient.WriteCache();
+        } 
+    }
+
+{{#kInfocTableData}}    {{getDefType}} {{getDefName}};    
+{{/kInfocTableData}}
+    BOOL {{kInfocIsReportCache}};
+}

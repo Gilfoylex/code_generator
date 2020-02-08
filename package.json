@@ -1,0 +1,29 @@
+{
+  "name": "code_generator",
+  "version": "1.0.0",
+  "description": "cpp code generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gilfoylex/code_generator.git"
+  },
+  "keywords": [
+    "generator"
+  ],
+  "author": "gilfoylex",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Gilfoylex/code_generator/issues"
+  },
+  "homepage": "https://github.com/Gilfoylex/code_generator#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "mustache": "^4.0.0",
+    "request": "^2.88.0",
+    "stream-buffers": "^3.0.2",
+    "superagent": "^5.2.1"
+  }
+}
