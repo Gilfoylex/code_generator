@@ -167,8 +167,9 @@ function getData( strUrl, Cookie) {
 
         dest.on('finish', () => {
             let data = dest.getContents();
-            console.log(data.toString());
-            resolve(data.toString());
+            let strData = data.toString()
+            console.log(strData);
+            resolve(strData);
           });
     });
 }
