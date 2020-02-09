@@ -13,5 +13,9 @@
       "app.js"
     ]
   },
+  
+  "web_accessible_resources": [
+    "config.json"
+  ],
   "manifest_version": 2
 }

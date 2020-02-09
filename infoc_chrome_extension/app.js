@@ -5,6 +5,18 @@
 // function selectionOnClick(info, tab) {
 //   alert(info.selectionText);
 // }  
+const fileUrl = chrome.runtime.getURL("config.json")
+var backUrl = "http://localhost"
+
+fetch(fileUrl)
+  .then((res) => {
+    return res.json()
+  })
+  .then(json => {
+    if (json.url) {
+      backUrl = json.url
+    }
+  })
 
 function genericOnClick(info, tab) {
   chrome.cookies.get({
@@ -12,9 +24,7 @@ function genericOnClick(info, tab) {
     name: 'sessionid'
   },
     function (cookie) {
-      console.log(cookie);
-
-      const tabUrl = 'http://localhost:2334/kinfoc?kfmturl=' + info.linkUrl + '&ksessionid=' + cookie.value;
+      const tabUrl = backUrl + '/kinfoc?kfmturl=' + info.linkUrl + '&ksessionid=' + cookie.value;
       chrome.tabs.create({ url: tabUrl });
     });
 }
