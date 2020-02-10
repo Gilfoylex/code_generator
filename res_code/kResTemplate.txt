@@ -1,0 +1,2 @@
+{{#kFileNames}}DEFINE_PNG(IDP_{{kIndex}},                {{kIndex}},        "res\\png\\{{kFileName}}")
+{{/kFileNames}}
