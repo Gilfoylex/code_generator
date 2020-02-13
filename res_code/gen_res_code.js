@@ -10,6 +10,12 @@ let dataView = {
 
 let nStartIndex = 1000
 
+const funcGetFilename = function(){
+    let strBaseName = this.kFileName;
+    let vecName = strBaseName.split(".")
+    return vecName[0]
+}
+
 function readFiles(strPath) {
     Fs.readdir(strPath, function (err, files) {
         if (err) {
@@ -23,17 +29,21 @@ function readFiles(strPath) {
                 if (stats.isFile()) {
                     dataView.kFileNames.push({
                         kIndex: nStartIndex++,
-                        kFileName: filename
+                        kFileName: filename,
+                        GetFileName: funcGetFilename
                     })
                 }
             })
 
             //let str = Path.join(__dirname, 'kResTemplate.txt')
             //console.log(str)
-            let strTemplate = Fs.readFileSync(Path.join(__dirname, 'kResTemplate.txt'), 'utf-8');
+            let strTemplate = Fs.readFileSync(Path.join(__dirname, 'kRc2Template.txt'), 'utf-8');
+            let skinTemplate = Fs.readFileSync(Path.join(__dirname, 'kSkinTemplate.txt'), 'utf-8');
 
             console.log(dataView.kFileNames)
             let output = Mustache.render(strTemplate, dataView);
+            console.log(output)
+            output = Mustache.render(skinTemplate, dataView);
             console.log(output)
 
         }

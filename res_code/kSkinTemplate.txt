@@ -1,0 +1,2 @@
+{{#kFileNames}}<png name="{{GetFileName}}" src="{{kIndex}}"/>
+{{/kFileNames}}
