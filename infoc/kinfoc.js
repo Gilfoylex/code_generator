@@ -53,7 +53,8 @@ const funGetDefName = function () {
         strRet = "str_" + this.kName
     }
 
-    return funFmtCamel(strRet);
+    return strRet;
+    //return funFmtCamel(strRet);
 }
 
 const funGetDefType = function () {
@@ -114,7 +115,7 @@ function Run(strKfmt) {
         kInfocTableName: "",
         KInfocTableIndex: 0,
         kInfocTableData: [],
-        kInfocIsReportCache: "bWithCache",
+        kInfocIsReportCache: "b_use_cache",
     }
     objView.kInfocFmtStr = strKfmt;
     let vecKfmt = strKfmt.split(" ")

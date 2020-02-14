@@ -9,13 +9,13 @@ struct {{ClassName}}
     }
 
     void Report() {
-        KInfocNoKfmtFileWrap infocClient;
-        infocClient.SetKfmt(L"{{kInfocFmtStr}}");
-{{#kInfocTableData}}        infocClient.{{getAdd}}(L"{{kName}}", {{getDefName}});
+        KInfocNoKfmtFileWrap infoc_client;
+        infoc_client.SetKfmt(L"{{kInfocFmtStr}}");
+{{#kInfocTableData}}        infoc_client.{{getAdd}}(L"{{kName}}", {{getDefName}});
 {{/kInfocTableData}}
 
-        if ({{kInfocIsReportCache}} || !infocClient.Report()) {
-            infocClient.WriteCache();
+        if ({{kInfocIsReportCache}} || !infoc_client.Report()) {
+            infoc_client.WriteCache();
         } 
     }
 
