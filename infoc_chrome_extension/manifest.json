@@ -1,6 +1,6 @@
 {
   "name": "Infoc Cpp Code",
-  "description": "generator info report cpp code",
+  "description": "generator infoc report cpp code",
   "version": "0.1",
   "permissions": [
     "contextMenus",
