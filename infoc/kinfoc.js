@@ -28,20 +28,19 @@ const funGetAdd = function () {
     return strRet;
 }
 
-const funFmtCamel = function (strRes) {
+const funFmtPascal = function (strRes) {
     let vecStr = strRes.split("_")
     let strRet = ""
     vecStr.forEach(function (value, index) {
         let strTemp = ''
-        if (index > 0) {
-            strTemp = value.substring(0, 1).toUpperCase() + value.substring(1)
-        }
-        else {
-            strTemp = value
-        }
+        strTemp = value.substring(0, 1).toUpperCase() + value.substring(1)
         strRet += strTemp
     })
     return strRet
+}
+
+const funGetClassName = function () {
+    return 'Report' + funFmtPascal(this.kInfocTableName)
 }
 
 const funGetDefName = function () {
@@ -110,7 +109,7 @@ function Run(strKfmt) {
 
     //声明kfmt数据格式
     let objView = {
-        ClassName: "ReportTest",
+        ClassName: funGetClassName,
         kInfocFmtStr: "",
         kInfocTableName: "",
         KInfocTableIndex: 0,
@@ -160,7 +159,7 @@ var browserMsg = {
     "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
 };
 
-function getData( strUrl, Cookie) {
+function getData(strUrl, Cookie) {
     return new Promise(function (resolve, reject) {
         //传入cookie
         let dest = new StreamBuffers.WritableStreamBuffer();
@@ -171,7 +170,7 @@ function getData( strUrl, Cookie) {
             let strData = data.toString()
             console.log(strData);
             resolve(strData);
-          });
+        });
     });
 }
 
@@ -180,7 +179,7 @@ Kinfoc.ParseKfmt = () => {
 
         if (ctx.path === '/kinfoc') {
             let kfmturl = ctx.query.kfmturl
-            let Cookie = "sessionid=" +  ctx.query.ksessionid
+            let Cookie = "sessionid=" + ctx.query.ksessionid
             let strKfmt = await getData(kfmturl, Cookie)
             ctx.body = Run(strKfmt)
         }

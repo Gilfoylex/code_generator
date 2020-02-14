@@ -8,15 +8,17 @@ struct {{ClassName}}
         
     }
 
-    void Report() {
+    void Report()
+    {
         KInfocNoKfmtFileWrap infoc_client;
         infoc_client.SetKfmt(L"{{kInfocFmtStr}}");
 {{#kInfocTableData}}        infoc_client.{{getAdd}}(L"{{kName}}", {{getDefName}});
 {{/kInfocTableData}}
 
-        if ({{kInfocIsReportCache}} || !infoc_client.Report()) {
+        if ({{kInfocIsReportCache}} || !infoc_client.Report())
+        {
             infoc_client.WriteCache();
-        } 
+        }
     }
 
 {{#kInfocTableData}}    {{getDefType}} {{getDefName}};    
