@@ -24,4 +24,4 @@ struct {{ClassName}}
 {{#kInfocTableData}}    {{getDefType}} {{getDefName}};    
 {{/kInfocTableData}}
     BOOL {{kInfocIsReportCache}};
-}
+};
