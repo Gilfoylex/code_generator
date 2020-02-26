@@ -12,7 +12,7 @@ struct {{ClassName}}
     {
         KInfocNoKfmtFileWrap infoc_client;
         infoc_client.SetKfmt(L"{{kInfocFmtStr}}");
-{{#kInfocTableData}}        infoc_client.{{getAdd}}(L"{{kName}}", {{getDefName}});
+{{#kInfocTableData}}        infoc_client.{{getAdd}}(L"{{kName}}", {{getDefName}}{{getBinaryNum}});
 {{/kInfocTableData}}
 
         if ({{kInfocIsReportCache}} || !infoc_client.Report())

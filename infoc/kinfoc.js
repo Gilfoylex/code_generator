@@ -16,6 +16,11 @@ function isString(strValue) {
     return -1 != vecString.indexOf(strValue)
 }
 
+function isBinary(strValue) {
+    let vecBinary = ["binary"]
+    return -1 != vecBinary.indexOf(strValue)
+}
+
 const funGetAdd = function () {
     let strRet = ""
     if (isInt(this.kType)) {
@@ -23,6 +28,9 @@ const funGetAdd = function () {
     }
     else if (isString(this.kType)) {
         strRet = "AddString"
+    }
+    else if (isBinary(this.kType)) {
+        strRet = "AddBinary"
     }
 
     return strRet;
@@ -51,6 +59,9 @@ const funGetDefName = function () {
     else if (isString(this.kType)) {
         strRet = "str_" + this.kName
     }
+    else if (isBinary(this.kType)) {
+        strRet = "by_" + this.kName
+    }
 
     return strRet;
     //return funFmtCamel(strRet);
@@ -64,6 +75,9 @@ const funGetDefType = function () {
     else if (isString(this.kType)) {
         strRet = "CString"
     }
+    else if (isBinary(this.kType)) {
+        strRet = "BYTE*"
+    }
 
     return strRet;
 }
@@ -76,8 +90,19 @@ const funGetDefaultValue = function () {
     else if (isString(this.kType)) {
         strRet = "L\"\""
     }
+    else if (isBinary(this.kType)) {
+        strRet = "NULL"
+    }
 
     return strRet;
+}
+
+const funGetBinaryNum = function () {
+    let strRet = ""
+    if (isBinary(this.kType)) {
+        strRet = ", 16"
+    }
+    return strRet
 }
 
 function ParseTableName(objView, strHead) {
@@ -96,6 +121,7 @@ function ParseReportBody(objView, strOneBody, bFirst) {
         getDefName: funGetDefName,
         getDefaultValue: funGetDefaultValue,
         getAdd: funGetAdd,
+        getBinaryNum: funGetBinaryNum,
     }
     objData.kPreDot = bFirst ? ":" : ","
     objData.kName = vecOne[0];
