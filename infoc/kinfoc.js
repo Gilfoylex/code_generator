@@ -2,7 +2,6 @@
 
 const Mustache = require('mustache')
 const Fs = require('fs')
-const Request = require('request')
 const SuperAgent = require('superagent')
 const StreamBuffers = require('stream-buffers');
 
@@ -47,6 +46,23 @@ const funFmtPascal = function (strRes) {
     return strRet
 }
 
+const funFmtCamel = function (strRes) {
+    let vecStr = strRes.split("_")
+    let strRet = ""
+    vecStr.forEach(function (value, index) {
+        let strTemp = ''
+        if (index > 0) {
+            strTemp = value.substring(0, 1).toUpperCase() + value.substring(1)
+            strRet += strTemp
+        }
+        else {
+            strRet += value
+        }
+        
+    })
+    return strRet
+}
+
 const funGetClassName = function () {
     return 'Report' + funFmtPascal(this.kInfocTableName)
 }
@@ -63,8 +79,8 @@ const funGetDefName = function () {
         strRet = "by_" + this.kName
     }
 
-    return strRet;
-    //return funFmtCamel(strRet);
+    //return strRet;
+    return funFmtCamel(strRet);
 }
 
 const funGetDefType = function () {
@@ -140,7 +156,7 @@ function Run(strKfmt) {
         kInfocTableName: "",
         KInfocTableIndex: 0,
         kInfocTableData: [],
-        kInfocIsReportCache: "b_use_cache",
+        kInfocIsReportCache: "bUseCache",
     }
     objView.kInfocFmtStr = strKfmt;
     let vecKfmt = strKfmt.split(" ")
