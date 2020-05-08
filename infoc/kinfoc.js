@@ -6,7 +6,7 @@ const SuperAgent = require('superagent')
 const StreamBuffers = require('stream-buffers');
 
 function isInt(strValue) {
-    let vecInt = ["int", "byte", "bit", "short"]
+    let vecInt = ["int", "byte", "bit", "short", "int64"]
     return -1 != vecInt.indexOf(strValue)
 }
 
