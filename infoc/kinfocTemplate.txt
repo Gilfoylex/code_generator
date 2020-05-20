@@ -1,5 +1,5 @@
 //generate by chrome extension
-struct K{{ClassName}}
+struct {{ClassName}}
 {
     {{ClassName}}()
 {{#kInfocTableData}}      {{kPreDot}} {{getDefName}}({{{getDefaultValue}}})
