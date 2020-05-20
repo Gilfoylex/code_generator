@@ -64,7 +64,7 @@ const funFmtCamel = function (strRes) {
 }
 
 const funGetClassName = function () {
-    return 'Report' + funFmtPascal(this.kInfocTableName)
+    return 'KReport' + funFmtPascal(this.kInfocTableName)
 }
 
 const funGetDefName = function () {
